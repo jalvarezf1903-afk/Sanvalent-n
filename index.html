@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('foto.jpeg') no-repeat center center/cover; /* AQUÍ PUEDES CAMBIAR LA IMAGEN */
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            width: 90%;
+            max-width: 500px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .yes {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        .yes:hover {
+            background-color: #ff1e4d;
+            transform: scale(1.1);
+        }
+
+        .no {
+            background-color: #cccccc;
+            color: black;
+        }
+
+        .no:hover {
+            background-color: #999999;
+            transform: scale(1.1);
+        }
+
+        .error-message {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #ff8080;
+            display: none;
+        }
+
+        .fade {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+        <h1>¿Quieres ser mi San Valentín? ❤️</h1>
+
+        <div class="buttons">
+            <button class="yes" onclick="respuestaSi()">Sí</button>
+            <button class="no" onclick="respuestaNo()">No</button>
+        </div>
+
+        <div id="error" class="error-message">
+            ❌ Respuesta incorrecta… intenta otra vez 😉
+        </div>
+    </div>
+
+    <script>
+        function respuestaSi() {
+            const numero = "5219331172380";
+            const mensaje = "Acepto ser tu san valenín mi amor";
+            const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+            window.location.href = url;
+        }
+
+        function respuestaNo() {
+            const error = document.getElementById("error");
+            error.style.display = "block";
+            error.classList.add("fade");
+        }
+    </script>
+
+</body>
+</html>
